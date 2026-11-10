@@ -1,13 +1,14 @@
 {
   "name": "homebridge-http-switch",
-  "version": "0.5.36",
+  "version": "0.5.37",
   "description": "Powerful http switch for Homebridge",
   "license": "ISC",
   "keywords": [
     "homebridge-plugin"
   ],
   "scripts": {
-    "test": "echo no test defined"
+    "test": "node --test test/*.test.js",
+    "coverage": "node --test --experimental-test-coverage test/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -17,13 +18,13 @@
     "url": "https://github.com/Supereg/homebridge-http-switch/issues"
   },
   "engines": {
-    "node": ">=10.17.0",
-    "homebridge": ">=0.4.8"
+    "node": "^22.12.0 || ^24.0.0 || ^26.0.0",
+    "homebridge": "^1.8.0 || ^2.0.0"
   },
   "dependencies": {
     "homebridge-http-base": "~2.1.13"
   },
   "devDependencies": {
-    "homebridge": "^1.5.0"
+    "homebridge": "^2.0.0"
   }
 }

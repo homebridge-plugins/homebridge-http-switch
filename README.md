@@ -27,6 +27,20 @@ Then run the following command to install `homebridge-http-switch`
 sudo npm install -g homebridge-http-switch
 ```
 
+## Toggle behavior improvement
+
+This is not a new switch type. It is an improvement to the existing `toggle` and `toggle-reverse` switch types.
+
+These modes now track the last state requested by HomeKit instead of relying on a `statusUrl`. This is useful when the target device exposes a command API but no reliable readback endpoint.
+
+- `switchType: "toggle"` starts in the OFF state.
+- `switchType: "toggle-reverse"` starts in the ON state.
+- The plugin keeps the last successful command in memory and reports that state back to HomeKit until the accessory is restarted.
+
+This helps devices that support simple ON/OFF commands but do not provide a dependable polling endpoint.
+
+If you want the previous readback-based behavior, use the regular `stateful` switch type with a valid `statusUrl` instead of `toggle` or `toggle-reverse`.
+
 ## Updating the switch state in HomeKit
 
 The _'On'_ characteristic from the _'switch'_ service has the permission to `notify` the HomeKit controller of state 

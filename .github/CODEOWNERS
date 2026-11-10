@@ -1,0 +1,9 @@
+# Default owners for all changes
+* @Supereg @barcar
+
+# Workflow and repo maintenance
+/.github/ @Supereg @barcar
+
+# Plugin source
+/index.js @Supereg @barcar
+/test/ @Supereg @barcar
