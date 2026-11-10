@@ -13,7 +13,10 @@ const storagePath = path.join(__dirname, 'homebridge');
 
 const args = `--plugin-path ${pluginPath} --user-storage-path ${storagePath} --debug`; // TODO debug option?; --no-qrcode
 
-const homebridge = spawn('homebridge', args.split(' '), {env: process.env}); // TODO maybe test with hap-nodejs, this method needs homebridge installed globally
+const homebridgeEntryPoint = require.resolve('homebridge');
+const homebridgePackageRoot = path.dirname(path.dirname(homebridgeEntryPoint));
+const homebridgeBin = path.join(homebridgePackageRoot, 'bin', 'homebridge.js');
+const homebridge = spawn(process.execPath, [homebridgeBin, ...args.split(' ')], {env: process.env});
 homebridge.stderr.on('data', data => {
     console.log(String(data));
 });

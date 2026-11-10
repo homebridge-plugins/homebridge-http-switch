@@ -1,0 +1,30 @@
+changelog:
+  categories:
+    - title: "🚀 Features"
+      labels:
+        - "enhancement"
+        - "feature"
+    - title: "🐛 Bug Fixes"
+      labels:
+        - "bug"
+        - "fix"
+    - title: "🧪 Tests"
+      labels:
+        - "test"
+        - "tests"
+        - "testing"
+    - title: "📚 Documentation"
+      labels:
+        - "documentation"
+        - "docs"
+    - title: "📦 Dependencies"
+      labels:
+        - "dependencies"
+        - "dependabot"
+    - title: "Other Changes"
+      labels:
+        - "*"
+
+  exclude:
+    labels:
+      - "skip-release"

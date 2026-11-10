@@ -1,5 +1,4 @@
 const http = require('http');
-const url = require('url');
 
 let value = false;
 
@@ -25,11 +24,11 @@ TestServer.prototype.handleHTTPCall = function (request, response) {
         return;
     }
 
-    const parts = url.parse(request.url, true);
+    const requestUrl = new URL(request.url, 'http://localhost');
 
-    const pathname = parts.pathname.charAt(0) === "/"
-        ? parts.pathname.substring(1)
-        : parts.pathname;
+    const pathname = requestUrl.pathname.charAt(0) === "/"
+        ? requestUrl.pathname.substring(1)
+        : requestUrl.pathname;
     const path = pathname.split("/");
 
     if (path.length === 0) {
@@ -37,7 +36,7 @@ TestServer.prototype.handleHTTPCall = function (request, response) {
         response.write("Bad Request");
         response.end();
 
-        console.log("Bad Request: " + parts.pathname);
+        console.log("Bad Request: " + requestUrl.pathname);
         return;
     }
 
